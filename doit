@@ -2,6 +2,7 @@
 
 hostnamectl set-hostname apache2
 umount /var/www/html
+chgrp vboxsf /var/www
 apt install -y apache2
 usermod -aG vboxsf www-data
 sed -i 's/nss-lookup.target/nss-lookup.target vboxadd.service vboxadd-service.service/g' /lib/systemd/system/apache2.service
